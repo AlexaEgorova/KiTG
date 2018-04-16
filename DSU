@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+struct dsu {
+	vector<int> parent;
+	vector<int> rank; //глубина вершины
+	dsu() = default;
+	dsu(int size) {
+		parent.resize(size);
+		rank.resize(size, 0);
+		for (int i = 0; i < size; i++){
+			parent[i] = i;
+		}
+	}
+	int find(int x) {
+		int y = x;
+		while (parent[x] != x) {
+			x = parent[x];
+		}
+		while (parent[y] != y) {
+			int tmp = y;
+			y = parent[y];
+			parent[tmp] = y;
+		}
+		return x;
+	}
+	void unio(int x, int y) {
+		int fx = find(x), fy = find(y);
+		if (fx == fy) cout << "ALREADY " << x << " " << y << endl;
+		else {
+			if (rank[x] > rank[y]) {
+				parent[fy] = fx;
+			}
+			else {
+				parent[fx] = fy;
+				if (rank[x] == rank[y]) rank[y]++;
+			}
+		}
+	}
+};
+
+int main() {
+	string s;
+	dsu name;
+	while (cin >> s) {
+		if (s[0] == 'R') {
+			int r;
+			cin >> r;
+			name = dsu(r);
+			cout << "RESET DONE\n";
+		}
+		else {
+			int a, b;
+			cin >> a >> b;
+			if (s[0] == 'C') {
+				if (name.find(a) == name.find(b)) cout << "YES\n";
+				else cout << "NO\n";
+			}
+			else {
+				name.unio(a,b);
+			}
+		}
+	}
+}
