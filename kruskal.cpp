@@ -1,4 +1,5 @@
 #include <iostream>
+#pragma -O3
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -42,7 +43,7 @@ struct dsu {
 		while (parent[y] != y) {
 			int tmp = y;
 			y = parent[y];
-			parent[tmp] = y;
+			parent[tmp] = x;
 		}
 		return x;
 	}
