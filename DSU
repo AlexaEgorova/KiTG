@@ -21,7 +21,7 @@ struct dsu {
 		while (parent[y] != y) {
 			int tmp = y;
 			y = parent[y];
-			parent[tmp] = y;
+			parent[tmp] = x;
 		}
 		return x;
 	}
