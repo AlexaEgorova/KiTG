@@ -37,7 +37,8 @@ int main(){
 		ochered.pop();//удаление взятого элемента
 		for(int k = H[otkudaIdem]; k != -1; k = L[k]){
 			int kudaIdem = J[k];
-			if (distance[otkudaIdem] + 1 < distance[kudaIdem]){//проверка, посещали ли мы эту вершину, меняя её размер с бесконечного на адекватный
+			if (distance[otkudaIdem] + 1 < distance[kudaIdem]){//проверка, посещали ли мы эту вершину, 
+				//меняя её размер с бесконечного на адекватный
 				ochered.push(kudaIdem);
 				distance[kudaIdem] = distance[otkudaIdem] + 1;
 				parent[kudaIdem] = otkudaIdem;
