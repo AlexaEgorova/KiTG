@@ -10,6 +10,7 @@ struct dsu{
         edge(int a, int b, int w): a(a-1), b(b-1), w(w){
         }
     };
+    
     vector<int> parent;
     vector<int> rank;
     vector<edge> edges;
